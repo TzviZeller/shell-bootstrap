@@ -51,7 +51,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 #Setup vim
 cp ./vimrc ~/.vimrc
-mkdir -p ~.vim/color/
+mkdir -p  ~/.vim/colors/
 cp ./rupza.vim ~/.vim/colors/rupza.vim
 
 #Setup Bash
