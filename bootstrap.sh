@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-set -eux pipefail
+set -e  # Exit with nonzero exit code if anything fails
 
 echo "Validate sudo credentials ..."
 sudo -v
@@ -77,5 +77,4 @@ sudo apt-get autoremove
 #Reload Bash
 exec bash
 
-#exit for Travis CI
-exit
+echo "All Done :)"
