@@ -76,3 +76,6 @@ sudo apt-get autoremove
 
 #Reload Bash
 exec bash
+
+#exit for Travis CI
+exit

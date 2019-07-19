@@ -2,3 +2,5 @@ language: bash
 
 script:
     - bash bootstrap.sh
+
+#TODO: make after script test to validate install
