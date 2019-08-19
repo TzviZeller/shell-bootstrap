@@ -73,11 +73,11 @@ cp ./bashrc ~/.bashrc
 sudo apt-get autoclean
 sudo apt-get autoremove
 
-#Reload Bash
-exec bash
+# #Reload Bash
+# exec bash
 
 echo "All Done :)"
 
-set +e
-travis_terminate  0
-exit 0
+# set +e
+# travis_terminate  0
+# exit 0
