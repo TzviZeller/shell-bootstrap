@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-set -x  # Exit with nonzero exit code if anything fails
+set -ev  # Exit with nonzero exit code if anything fails
 
 echo "Validate sudo credentials ..."
 sudo -v
