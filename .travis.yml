@@ -1,6 +1,6 @@
 language: bash
 
 script:
-    - bash bootstrap.sh
+    - bash bootstrap.sh || travis_terminate 1;
 
 #TODO: make after script test to validate install
