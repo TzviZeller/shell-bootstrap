@@ -1,7 +1,7 @@
-# shell-bootstrap
-Script to download and run to make any terminal make me feel at home
+# Shell-Bootstrap
+Script to make any terminal make me feel at home!
 
+ >Script is meant for personal use and is an ongoing project!
 
-Script is meant for pernal use and is an ongoing poject! 
-
-Please run in project directory. 
+### Install
+Run in project directory.
