@@ -11,7 +11,7 @@ echo "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee
 
 #Add Deb Server - Atom
 wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ stable main" | sudo tee /etc/apt/sources.list.d/atom.list
+echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" | sudo tee /etc/apt/sources.list.d/atom.list
 
 #Add Deb Server - Chrome
 wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
