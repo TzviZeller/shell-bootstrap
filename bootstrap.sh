@@ -5,18 +5,17 @@ set -ev  # Exit with nonzero exit code if anything fails
 echo "Validate sudo credentials ..."
 sudo -v
 
-
 #Add Deb Server - Spotify
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+wget -qO - https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 
 #Add Deb Server - Atom
 wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ stable main" | sudo tee /etc/apt/sources.list.d/atom.list
 
 #Add Deb Server - Chrome
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
 
 
 #Updating Package List and upgrade
@@ -78,3 +77,4 @@ sudo apt-get autoremove
 exec bash
 
 echo "All Done :)"
+# exit 0
