@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-set -euxo pipefail  # Exit with nonzero exit code if anything fails
+set -euxo pipefail
 
 echo "Validate sudo credentials ..."
 sudo -v
@@ -73,11 +73,4 @@ cp ./bashrc ~/.bashrc
 sudo apt-get autoclean
 sudo apt-get autoremove
 
-# #Reload Bash
-# exec bash
-
 echo "All Done :)"
-
-# set +e
-# travis_terminate  0
-# exit 0

@@ -1,7 +1,6 @@
 language: bash
 
 script:
-  # - set -e
   - bash bootstrap.sh
 
 #TODO: make after script test to validate install
