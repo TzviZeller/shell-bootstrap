@@ -77,4 +77,4 @@ sudo apt-get autoremove
 exec bash
 
 echo "All Done :)"
-exit 0
+travis_terminate  0
