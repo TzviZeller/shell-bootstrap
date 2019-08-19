@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-set -ev  # Exit with nonzero exit code if anything fails
+set -euxo pipefail  # Exit with nonzero exit code if anything fails
 
 echo "Validate sudo credentials ..."
 sudo -v
@@ -77,4 +77,4 @@ sudo apt-get autoremove
 exec bash
 
 echo "All Done :)"
-# exit 0
+exit 0
