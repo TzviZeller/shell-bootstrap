@@ -48,6 +48,7 @@ apm install language-docker
 apm install linter-kubectl
 apm install todo-show
 apm install open-in-browsers
+#test
 #Configure Atom - Theme Install
 #TODO: theme install and settings config
 
