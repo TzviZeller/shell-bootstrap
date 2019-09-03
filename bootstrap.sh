@@ -46,10 +46,8 @@ apm install autocomplete-python
 apm install atom-beautify
 apm install language-docker
 apm install linter-kubectl
-apm install markdown-preview
 apm install todo-show
-apm install open-in-browser
-apm install highlight-selected
+apm install open-in-browsers
 #Configure Atom - Theme Install
 #TODO: theme install and settings config
 
