@@ -1,4 +1,4 @@
-"a dark colorscheme to GUI Vim. 
+" Dark colorscheme for Vim. 
 
 set background=dark
 

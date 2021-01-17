@@ -1,0 +1,22 @@
+# Term color
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# Enable git auto-completion
+source /usr/local/etc/bash_completion.d/*
+
+# Alias definitions
+# ~/.bash_alias, instead of adding them here
+if [ -f ~/.bash_alias ]; then
+    . ~/.bash_alias
+fi  
+
+# Function definitions
+# ~/.bash_functions, instead of adding them here
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
+# Sourcing in fuzzy_find
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -1,75 +1,51 @@
 #!/usr/bin/bash
 
-set -euxo pipefail
+working_dir=$(dirname "$0")
+os=$(uname)
 
-echo "Validate sudo credentials ..."
-sudo -v
+if [[ $os == 'Linux' ]]; then
+    rc_name='bashrc'
 
-#Add Deb Server - Spotify
-wget -qO - https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb [arch=amd64] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+    echo "Validate sudo credentials ..."
+    sudo -v
 
-#Add Deb Server - Atom
-wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" | sudo tee /etc/apt/sources.list.d/atom.list
+    #Updating Package List and Upgrading them
+    sudo apt-get update
+    sudo apt-get dist-upgrade
 
-#Add Deb Server - Chrome
-wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+    #Software Install - System Utilities
+    sudo apt-get install -y htop tree git chromium-browser vim
 
+    #Clear apt cache
+    sudo apt-get autoclean
+    sudo apt-get autoremove
 
-#Updating Package List and upgrade
-sudo apt-get update
-sudo apt-get dist-upgrade
+elif [[$os == 'Darwin' ]]; then
+    rc_name='bash_profile'
 
-#Software Install - System Utilities
-sudo apt-get install -y htop tree
+else
+    echo 'Unknown OS, Exiting'
+    exit 1
+fi
 
-#Software Install - Chrome
-sudo apt-get install google-chrome-stable
+#Software Install - fzf(github.com/junegunn/fzf)
+if [ ! -d ~/.fzf/ ]; then    
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install --key-bindings --completion --update-rc
+fi
 
-#Software Install - Blue Light Dimmer
-sudo apt-get install -y redshift
-#Configure Redshift
-#TODO: config redshift for birtness and autostart
+#Setup - Bash
+cp $working_dir/$os/$rc_name ~/.$rc_name
+cp $working_dir/shared_configs/bash_aliases ~/.bash_aliases
+cp $working_dir/shared_configs/bash_functions ~/.bash_functions
 
-#Software Install - Spotify
-sudo apt-get install -y spotify-client
-#Cofigure Spotify
-#TODO: sign-on and spotify cli
-
-#Software Install - Atom
-sudo apt-get install -y atom
-#Configure Atom - Package Install
-apm install highlight-selected
-apm install autocomplete-python
-apm install atom-beautify
-apm install language-docker
-apm install linter-kubectl
-apm install todo-show
-apm install open-in-browsers
-#test
-#Configure Atom - Theme Install
-#TODO: theme install and settings config
-
-#Software Install -  fzf(github.com/junegunn/fzf)
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --key-bindings --completion --update-rc
-
-
-#Configure git
-#TODO: config git for use
-
-#Setup vim
-cp ./vimrc ~/.vimrc
+#Setup - Vim
+cp $working_dir/shared_configs/vimrc ~/.vimrc
 mkdir -p  ~/.vim/colors/
-cp ./rupza.vim ~/.vim/colors/rupza.vim
+cp $working_dir/shared_configs/rupza.vim ~/.vim/colors/rupza.vim
 
-#Setup Bash
-cp ./bashrc ~/.bashrc
-
-#Clear apt cache
-sudo apt-get autoclean
-sudo apt-get autoremove
+#Setup - SSH
+mkdir -p ~/.ssh/sockets/
+cp $working_dir/shared_configs/config ~/.ssh/config
 
 echo "All Done :)"

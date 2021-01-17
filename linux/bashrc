@@ -1,0 +1,62 @@
+# Ignore duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoreboth:erasedups
+
+# Set history length HISTSIZE and HISTFILESIZE
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# Append to the history file, don't overwrite it
+shopt -s histappend
+#Check window size after each command
+shopt -s checkwinsize
+
+# Fancy and colorful prompt
+force_color_prompt=yes
+unset color_prompt force_color_prompt
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        color_prompt=yes
+    else
+        color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+
+# Color for ls
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+fi
+
+# Alias definitions
+# ~/.bash_alias, instead of adding them here
+if [ -f ~/.bash_alias ]; then
+    . ~/.bash_alias
+fi  
+
+# Function definitions
+# ~/.bash_functions, instead of adding them here
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
+# Enable programmable completions
+if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+
+# Sourcing in fuzzy_find
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

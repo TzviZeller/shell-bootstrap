@@ -1,0 +1,6 @@
+alias ll='ls -alF'
+
+alias red='redshift -ov -t 4500:4500'
+alias time='date +$USER\ %m%d\ - %H:%M\ %Z | xclip -sel c'
+alias plug='lsof /var/lib/apt/lists/lock'
+

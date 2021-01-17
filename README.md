@@ -1,13 +1,8 @@
-Shell-Bootstrap
+# Shell-Bootstrap #
 ---------------
 
-Master Branch: [![Build Status](https://travis-ci.com/TzviZeller/shell-bootstrap.svg?branch=master)](https://travis-ci.com/TzviZeller/shell-bootstrap)
-Dev Branch: [![Build Status](https://travis-ci.com/TzviZeller/shell-bootstrap.svg?branch=Dev)](https://travis-ci.com/TzviZeller/shell-bootstrap)
+Master Branch: [![Build Status](https://travis-ci.com/TzviZeller/shell-bootstrap.svg?branch=master)](https://travis-ci.com/TzviZeller/shell-bootstrap)  Dev Branch: [![Build Status](https://travis-ci.com/TzviZeller/shell-bootstrap.svg?branch=Dev)](https://travis-ci.com/TzviZeller/shell-bootstrap)
 
-Script to make any terminal make me feel at home!
+### A Bash script to make any terminal make me feel at home! ###
 
- >Script is meant for personal use and is an ongoing project!
-
-Install
--------
-Run in project directory.
+### This script is for personal use and is an ongoing project. ###
