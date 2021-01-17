@@ -6,12 +6,11 @@ set wrap                    " wrap lines
 set encoding=utf-8          " set encoding to UTF-8
 set mouse=a                 " enable mouse support (might not work well on Mac OS X)
 set wildmenu                " visual autocomplete for command menu
-set wildchar=<TAB>          "   show possible completions.
+set wildchar=<TAB>          " show possible completions.
 set showmatch               " highlight matching parentheses / brackets [{()}]
 set spelllang=en_us         " spell checking
 set autoread                " reload files if changed externally
-set pastetoggle=<leader>p   " paste mode: avoid auto indent
-set laststatus=2            " Always show status line
+set pastetoggle=p           " paste mode: avoid auto indent
 
 
 """" Vim Appearance

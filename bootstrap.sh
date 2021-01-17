@@ -11,16 +11,16 @@ if [[ $os == 'Linux' ]]; then
 
     #Updating Package List and Upgrading them
     sudo apt-get update
-    sudo apt-get dist-upgrade
+    sudo apt-get dist-upgrade -y
 
     #Software Install - System Utilities
     sudo apt-get install -y htop tree git chromium-browser vim
 
     #Clear apt cache
     sudo apt-get autoclean
-    sudo apt-get autoremove
+    sudo apt-get autoremove -y
 
-elif [[$os == 'Darwin' ]]; then
+elif [[ $os == 'Darwin' ]]; then
     rc_name='bash_profile'
 
 else

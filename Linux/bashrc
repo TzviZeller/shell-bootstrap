@@ -12,7 +12,6 @@ shopt -s checkwinsize
 
 # Fancy and colorful prompt
 force_color_prompt=yes
-unset color_prompt force_color_prompt
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -36,11 +35,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias vdir='vdir --color=auto'
     alias grep='grep --color=auto'
 fi
+unset color_prompt force_color_prompt
+
 
 # Alias definitions
-# ~/.bash_alias, instead of adding them here
-if [ -f ~/.bash_alias ]; then
-    . ~/.bash_alias
+# ~/.bash_aliases, instead of adding them here
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi  
 
 # Function definitions
