@@ -22,3 +22,6 @@ syntax on                   " use filetype-based syntax highlighting
 """" Vim Aliases 
 command W wq                " Fast save and quit
 command Q q!                " Fast force quit
+
+" Sudo Save
+cmap w!! w !sudo tee % > /dev/null 

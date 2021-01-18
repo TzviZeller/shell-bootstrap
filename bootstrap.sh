@@ -14,7 +14,7 @@ if [[ $os == 'Linux' ]]; then
     sudo apt-get dist-upgrade -y
 
     #Software Install - System Utilities
-    sudo apt-get install -y htop tree git chromium-browser vim
+    sudo apt-get install -y htop tree git chromium-browser vim curl net-tools xclip 
 
     #Clear apt cache
     sudo apt-get autoclean
@@ -47,5 +47,8 @@ cp $working_dir/shared_configs/rupza.vim ~/.vim/colors/rupza.vim
 #Setup - SSH
 mkdir -p ~/.ssh/sockets/
 cp $working_dir/shared_configs/config ~/.ssh/config
+
+#Setup - Git
+cp $working_dir/shared_configs/gitconfig ~/.gitconfig
 
 echo "All Done :)"

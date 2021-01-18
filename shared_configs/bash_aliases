@@ -1,5 +1,10 @@
 alias ll='ls -alF'
 
+alias update='sudo apt-get update && sudo apt-get dist-upgrade -y'
+alias blist='git branch -a'
+alias gsend='git commit -av'
+alias rsend='git commit -av --amend'
+
 alias red='redshift -ov -t 4500:4500'
 alias time='date +$USER\ %m%d\ - %H:%M\ %Z | xclip -sel c'
 alias plug='lsof /var/lib/apt/lists/lock'
