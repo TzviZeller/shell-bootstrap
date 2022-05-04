@@ -1,0 +1,8 @@
+List of things todo
+
+VScode:
+- Set vertical ruler = https://stackoverflow.com/questions/29968499/vertical-rulers-in-visual-studio-code
+
+- Set linter to pylint = https://code.visualstudio.com/docs/python/linting
+
+-

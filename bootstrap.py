@@ -1,55 +1,77 @@
-#
+#TODO:Add header
+#!/usr/bin/env python3
 
 import argparse
 import platform
 import logging
+import subprocess
 import sys
 import os
 
-argparse = argparse.ArgumentParser()
-argparse.add_argument('-l','--logLevel', default='INFO', help='')
-OS = None
+parser = argparse.ArgumentParser()
+parser.add_argument('-L','--loglevel', default='INFO',
+    help='Level for logging, Only Accepted Values [DEBUG, INFO, WARNING, ERROR, CRITICAL]')
+args = parser.parse_args()
 
-def setup():
-    print('Starting Setup :)')
-    if logLevel in ('DEBUG', 'INFO', 'WARNING', 'ERROR','CRITICAL'):
-        print('{OS} not recognized!')
-        logging.ERROR('{OS} not recognized! ... Exiting :( ')
-        os._exit(1)
-    logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG)
+def setup(log_level):
+    """_summary_  #TODO:fillout
 
-    #Determine OS
+    Args:
+        log_level (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    # Setup Logging
+    if log_level not in ('DEBUG', 'INFO', 'WARNING', 'ERROR','CRITICAL'):
+        log_level = 'INFO'
+    #TODO:Make log_level dynamic, wont take string val
+    logformat='%(asctime)s - %(levelname)s - %(message)s'
+    logging.basicConfig(filename='example.log', filemode='w', format=logformat, level=logging.INFO)
+    logging.info('####Boostrap Start####')
+
+    # Determine OS
     OS = platform.system()
-    logging.INFO(platform.platform())
-    logging.DEBUG(platform.platform())
+    logging.info(platform.uname())
     if OS == 'Linux':
-        print('Detected System = {OS}')
+        print(f"Detected System = {OS}")
     elif OS == 'Darwin':
-        print('Detected System = {OS}')
+        print(f'Detected System = {OS}')
     else:
-        print('{OS} not recognized!')
-        logging.ERROR('{OS} not recognized! ... Exiting :( ')
+        print(f'{OS} not recognized!')
+        logging.CRITICAL('{OS} not recognized! ... Exiting :( ')
+        os._exit(1)
+    return OS
+
+def lin_packages():
+    logging.INFO('Validate sudo credentials')
+    if os.geteuid() != 0:
+        logging.CRITICAL('Root Permissions Needed, Please run with sudo')
         os._exit(1)
 
+    apt_log=
     return
 
-def linPackages():
+def mac_packages():
     return
 
-def macPackages():
+def lin_tool_install():
     return
 
-def linToolInstall():
+def mac_tool_install():
     return
 
-def macToolInstall():
+def mac_env_setup():
     return
 
-def linEnvSetup():
+def mac_env_setup():
     return
 
-def macEnvSetup():
+def lin_work_flow(OS):
+    return
+
+def mac_work_flow(OS):
     return
 
 if __name__ == '__main__':
-    setup()
+    setup(args.log_level.upper())

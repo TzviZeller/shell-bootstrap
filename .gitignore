@@ -1,0 +1,18 @@
+# Compiled Sources
+*.com
+*.dll
+*.exe
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Logging
+**/*.log
+
+# Misc
+__pycache__
