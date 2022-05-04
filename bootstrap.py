@@ -39,17 +39,16 @@ def setup(log_level):
         print(f'Detected System = {OS}')
     else:
         print(f'{OS} not recognized!')
-        logging.CRITICAL('{OS} not recognized! ... Exiting :( ')
+        logging.INFO('{OS} not recognized! ... Exiting :( ')
         os._exit(1)
     return OS
 
 def lin_packages():
     logging.INFO('Validate sudo credentials')
     if os.geteuid() != 0:
-        logging.CRITICAL('Root Permissions Needed, Please run with sudo')
+        logging.INFO('Root Permissions Needed, Please run with sudo')
         os._exit(1)
 
-    apt_log=
     return
 
 def mac_packages():
@@ -61,7 +60,7 @@ def lin_tool_install():
 def mac_tool_install():
     return
 
-def mac_env_setup():
+def lin_env_setup():
     return
 
 def mac_env_setup():
