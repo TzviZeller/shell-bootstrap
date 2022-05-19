@@ -13,64 +13,70 @@ parser.add_argument('-L','--loglevel', default='INFO',
     help='Level for logging, Only Accepted Values [DEBUG, INFO, WARNING, ERROR, CRITICAL]')
 args = parser.parse_args()
 
-def setup(log_level):
-    """_summary_  #TODO:fillout
+def setup(operatingSystem):
+    """_summary_
 
     Args:
-        log_level (_type_): _description_
-
-    Returns:
-        _type_: _description_
+        operatingSystem (_type_): _description_
     """
     # Setup Logging
+    log_level = args.loglevel.upper()
     if log_level not in ('DEBUG', 'INFO', 'WARNING', 'ERROR','CRITICAL'):
         log_level = 'INFO'
-    #TODO:Make log_level dynamic, wont take string val
     logformat='%(asctime)s - %(levelname)s - %(message)s'
-    logging.basicConfig(filename='example.log', filemode='w', format=logformat, level=logging.INFO)
+    logging.basicConfig(filename='example.log', filemode='w', format=logformat)
+    logging.getLogger().setLevel(log_level)
     logging.info('####Boostrap Start####')
 
-    # Determine OS
-    OS = platform.system()
+    # Determine Operating System
     logging.info(platform.uname())
-    if OS == 'Linux':
-        print(f"Detected System = {OS}")
-    elif OS == 'Darwin':
-        print(f'Detected System = {OS}')
+    if operatingSystem == 'Linux':
+        print(f"Detected System = {operatingSystem}")
+    elif operatingSystem == 'Darwin':
+        print(f'Detected System = {operatingSystem}')
     else:
-        print(f'{OS} not recognized!')
-        logging.INFO('{OS} not recognized! ... Exiting :( ')
+        print(f'{operatingSystem} not recognized!')
+        # Pylint says I have to use f'%s' here
+        logging.info('%s not recognized! ... Exiting :( ' ,operatingSystem)
         os._exit(1)
-    return OS
+    return
 
 def lin_packages():
-    logging.INFO('Validate sudo credentials')
-    if os.geteuid() != 0:
-        logging.INFO('Root Permissions Needed, Please run with sudo')
-        os._exit(1)
-
-    return
-
-def mac_packages():
-    return
-
-def lin_tool_install():
-    return
-
-def mac_tool_install():
+    """_summary_
+    """
+    logging.info('Validating sudo credentials')
+    if not 'SUDO_UID' in os.environ.keys():
+        logging.info('Root Permissions Needed, Please run as root!')
+        sys.exit('Root Permissions Needed, Please run as root!')
     return
 
 def lin_env_setup():
+    """_summary_
+    """
     return
 
 def mac_env_setup():
+    """_summary_
+    """
     return
 
-def lin_work_flow(OS):
+def lin_tool_install():
+    """_summary_
+    """
     return
 
-def mac_work_flow(OS):
+def mac_tool_install():
+    """_summary_
+    """
     return
 
 if __name__ == '__main__':
-    setup(args.log_level.upper())
+    operatingSystem = platform.system()
+    setup(operatingSystem)
+    if operatingSystem == 'Linux':
+        lin_packages()
+        lin_env_setup()
+        lin_tool_install()
+    elif operatingSystem == 'Darwin':
+        mac_env_setup()
+        mac_tool_install()

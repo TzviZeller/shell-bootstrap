@@ -5,4 +5,6 @@ VScode:
 
 - Set linter to pylint = https://code.visualstudio.com/docs/python/linting
 
--
+- Need to standardize on gnome, default is terrible
+
+- Switch from .travis.yml to github actions, third-party risk mitigation
